@@ -52,7 +52,8 @@ lcd.clear()
 lcd.move_to(0, 0)
 lcd.putstr("Starting wifi...")
 
-lcd.putstr("\n%s" % wifi.connect())
+ip_address = wifi.connect()
+lcd.putstr("\n%s" % ip_address)
 sleep(3)
 
 bme = BME280.BME280(i2c=i2c)
