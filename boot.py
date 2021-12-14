@@ -20,8 +20,9 @@ from sensors import BME280
 from wifi import wifi
 # import PMS5003
 from machine import UART
-from esp32_gpio_lcd import GpioLcd
-
+# from lcd import esp32_gpio_lcd.GpioLcd
+# from lcd import GpioLcd
+from lcd.esp32_gpio_lcd import GpioLcd
 
 # import PMS
 # import PMSTEST
@@ -51,15 +52,8 @@ lcd.clear()
 lcd.move_to(0, 0)
 lcd.putstr("Starting wifi...")
 
-lcd.putstr("\n%s" % wifi.connect())
+ip_address = wifi.connect()
+lcd.putstr("\n%s" % ip_address)
 sleep(3)
 
 bme = BME280.BME280(i2c=i2c)
-
-"""
-import webserver.webserver as webserver
-import uasyncio
-loop = uasyncio.get_event_loop()
-loop.create_task(webserver.run(bme))
-loop.run_forever()
-"""

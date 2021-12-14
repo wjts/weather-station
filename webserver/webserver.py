@@ -27,6 +27,7 @@ async def index(request, response):
     """ % (bme_sensor.humidity, bme_sensor.pressure, bme_sensor.temperature))
 
 
-def run(bme):
+def run(ip, bme):
+    global bme_sensor
     bme_sensor = bme
-    app.run(host='0.0.0.0', port=80)
+    app.run(host=ip, port=80)
